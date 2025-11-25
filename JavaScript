@@ -1,0 +1,26 @@
+// B. LÓGICA DE MUDANÇA DE SABOR/VISUAL
+const chocolateImg = document.getElementById('chocolate-img');
+const botoesSabor = document.querySelectorAll('.sabor-btn'); // Seleciona todos os botões de sabor
+
+// Mapeia o sabor para o nome do arquivo da imagem
+const imagens = {
+    'milk': 'milk.png',
+    'dark': 'dark.png',
+    'white': 'white.png'
+};
+
+function mudarSabor(event) {
+    // Pega o valor do atributo data-sabor do botão clicado
+    const novoSabor = event.target.dataset.sabor; 
+    
+    // Atualiza o atributo src da imagem
+    chocolateImg.src = imagens[novoSabor];
+    
+    // Opcional: Atualiza o texto alternativo (Acessibilidade)
+    chocolateImg.alt = `Chocolate ${novoSabor}`; 
+}
+
+// Adiciona o Event Listener a TODOS os botões de sabor
+botoesSabor.forEach(button => {
+    button.addEventListener('click', mudarSabor);
+});
